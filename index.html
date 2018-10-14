@@ -15,15 +15,11 @@
     <!-- Title -->
     <h1>Whack a Mole</h1>
     <!-- Start Button -->
-      <div class="start-screen">
-        <button class="start" onclick="startGame()">New Game</button>
-      </div>
-
+    <button class="start" onclick="startGame()">Start Game</button>
     <!-- Score -->
-      <div class="score-board">
-          <p>Score : <span class="score">0</span></p>
-      </div>
-
+    <p>Score : <span class="score">0</span></p>
+    <!-- CountDown -->
+    <p> Time: <span class="timer">10 </span> s</p>
     <!-- Game -->
       <div class="game">
         <div class="hole hole1">
@@ -75,9 +71,7 @@
           <div class="mole"></div>
         </div>
       </div>
-
     <!-- Javascript -->
       <script src="js/game.js"></script>
-
   </body>
 </html>
