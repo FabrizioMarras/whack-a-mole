@@ -24,7 +24,7 @@ function randomHole(holes) {
 }
 
 //Pop the mole from the hole:
-function popMole(){
+function popMole() {
   //getting the random time for the pop
   const time = randomTime(500, 900); //reduce the numbers (time) to make the game more difficult
   //getting the random holes where to pop
@@ -38,4 +38,12 @@ function popMole(){
      hole.classList.remove('pop');
      if (!timeUp) popMole(); //keeps popping moles one after the other by calling the popMole function. unless the timeUp variable is set to true - timeUp is set to false at the beginning;
    }, time);
+}
+
+//Start the Game:
+function startGame() {
+  scoreBoard.textContent = 0; // reset the score to 0;
+  timeUp = false; //make sure that the timeUp is false at the bneginning of each game.
+  popMole(); //start making the mole popping up and down from random holes.
+  setTimeout(() => timeUp = true, 10000); //stop the popping of the moles after 15 sec.
 }
