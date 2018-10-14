@@ -16,10 +16,17 @@
     <h1>Whack a Mole</h1>
     <!-- Start Button -->
     <button class="start" onclick="startGame()">Start Game</button>
+    <!-- Game Level -->
+    <select class="level" name="level" onchange="selectLevel()">
+      <option value="">Levels</option>
+      <option value="1">Easy</option>
+      <option value="2">Difficult</option>
+    </select>
     <!-- Score -->
     <p>Score : <span class="score">0</span></p>
     <!-- CountDown -->
     <p> Time: <span class="timer">10 </span> s</p>
+
     <!-- Game -->
       <div class="game">
         <div class="hole hole1">
