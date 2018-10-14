@@ -4,6 +4,7 @@ const scoreBoard = document.querySelector('.score'); //select the score.
 const moles = document.querySelectorAll('.mole'); //select all the moles.
 
 let lastHole; //this variable is needed in the randomHole function to avoid that the same hole is picked twice or more consecutively.
+let timeUp = false; //this variable is used for being able to control the time frame in which the mole pops up and down from the holes...it is used in the popMole function.
 
 //generate random Time amount:
 function randomTime(min, max) {
@@ -35,6 +36,6 @@ function popMole(){
    setTimeout(() => {
      // after a random amount of time it removes the pop class
      hole.classList.remove('pop');
-     popMole(); //keeps popping moles one after the other by calling the popMole function.;
+     if (!timeUp) popMole(); //keeps popping moles one after the other by calling the popMole function. unless the timeUp variable is set to true - timeUp is set to false at the beginning;
    }, time);
 }
