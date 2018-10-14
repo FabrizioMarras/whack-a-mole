@@ -21,3 +21,20 @@ function randomHole(holes) {
   lastHole = hole; //set the lastHole equal to the last picked hole.
   return hole;
 }
+
+//Pop the mole from the hole:
+function popMole(){
+  //getting the random time for the pop
+  const time = randomTime(500, 900); //reduce the numbers (time) to make the game more difficult
+  //getting the random holes where to pop
+  const hole = randomHole(holes);
+
+  //add the "pop" class to our div containing the class of hole in order to generate the pop effect for the mole:
+  hole.classList.add('pop');
+  //remove the mole after a random amount of time by creating a setTimeout function:
+   setTimeout(() => {
+     // after a random amount of time it removes the pop class
+     hole.classList.remove('pop');
+     popMole(); //keeps popping moles one after the other by calling the popMole function.;
+   }, time);
+}
