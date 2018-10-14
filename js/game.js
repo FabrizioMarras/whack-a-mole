@@ -2,6 +2,7 @@
 const holes = document.querySelectorAll('.hole'); //select all the holes.
 const scoreBoard = document.querySelector('.score'); //select the score.
 const moles = document.querySelectorAll('.mole'); //select all the moles.
+const countDown = document.querySelector('.timer'); //select the score.
 
 let lastHole; //this variable is needed in the randomHole function to avoid that the same hole is picked twice or more consecutively.
 let timeUp = false; //this variable is used for being able to control the time frame in which the mole pops up and down from the holes...it is used in the popMole function.
@@ -41,13 +42,24 @@ function popMole() {
    }, time);
 }
 
+
 //Start the Game:
 function startGame() {
   scoreBoard.textContent = 0; // reset the score to 0;
   timeUp = false; //make sure that the timeUp is false at the bneginning of each game.
-    score = 0; // set the score to 0 at the beginning of the game.
+  score = 0; // set the score to 0 at the beginning of the game.
+
+    // Add a Countdown time:
+    var timeleft = 10;
+    var downloadTimer = setInterval(function(){
+    timeleft--;
+    countDown.textContent = timeleft;
+    if(timeleft <= 0)
+        clearInterval(downloadTimer);
+    },1000);
+
   popMole(); //start making the mole popping up and down from random holes.
-  setTimeout(() => timeUp = true, 10000); //stop the popping of the moles after 15 sec.
+  setTimeout(() => timeUp = true, 10000); //stop the popping of the moles after 10 sec.
 }
 
 //Click on the mole:
