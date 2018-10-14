@@ -49,3 +49,12 @@ function startGame() {
   popMole(); //start making the mole popping up and down from random holes.
   setTimeout(() => timeUp = true, 10000); //stop the popping of the moles after 15 sec.
 }
+
+//Click on the mole:
+function clickMole(event) {
+  if(!event.isTrusted) return; //avoid cheating the clicks!
+  score++; //increase the score by one point every time the mole is clicked.
+  scoreBoard.textContent = score; //update the score.
+}
+
+moles.forEach(mole => mole.addEventListener("click", clickMole)); //listen to the DOM fopr clicks on the mole.
