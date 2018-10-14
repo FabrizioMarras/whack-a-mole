@@ -33,7 +33,7 @@ body {
 
 .mole {
 	position: absolute;
-	top: 10px;
+	top: 100px;
 	left:0;
 	right:0;
 	margin: 0 auto;
@@ -41,4 +41,9 @@ body {
 	height: 90px;
 	background: yellow;
 	border-radius: 50% 50% 0 0;
+	transition: all 0.5s;
+}
+
+.hole.pop .mole {
+	top: 10px
 }
