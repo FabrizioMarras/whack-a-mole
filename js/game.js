@@ -54,6 +54,7 @@ function startGame() {
 function clickMole(event) {
   if(!event.isTrusted) return; //avoid cheating the clicks!
   score++; //increase the score by one point every time the mole is clicked.
+  this.classList.remove("pop"); //make sure that the mole goes down after it is clicked - this avoid that the mole is clicked more than once.
   scoreBoard.textContent = score; //update the score.
 }
 
