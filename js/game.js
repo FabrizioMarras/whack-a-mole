@@ -3,14 +3,15 @@ const holes = document.querySelectorAll('.hole'); //select all the holes.
 const scoreBoard = document.querySelector('.score'); //select the score.
 const moles = document.querySelectorAll('.mole'); //select all the moles.
 const countDown = document.querySelector('.timer'); //select the score.
-const level = document.querySelector('.level'); //select the level.
+const startScreen = document.querySelector('.start-screen'); //select the score.
+const gameBoard = document.querySelector('.game'); //select the score.
+const newGame = document.querySelector('.new-game'); // select the new-game button.
 
 let lastHole; //this variable is needed in the randomHole function to avoid that the same hole is picked twice or more consecutively.
 let timeUp = false; //this variable is used for being able to control the time frame in which the mole pops up and down from the holes...it is used in the popMole function.
 let score; //variable used in startGame and popMole functions to set the score of the game.
-let difficultyLevel; //variable used in selectLevel and popMole functions to check the selected level of difficulty of the game and change the time range for the random pop of the mole.
-let minTime; //variable used in selectLevel and popMole functions for the min time for the pop of the mole
-let maxTime; //variable used in selectLevel and popMole functions for the max time for the pop of the mole
+let minTime; //variable used to set the min time for the pop of the mole
+let maxTime; //variable used to set the max time for the pop of the mole
 
 //generate random Time amount:
 function randomTime(min, max) {
@@ -27,17 +28,6 @@ function randomHole(holes) {
   }
   lastHole = hole; //set the lastHole equal to the last picked hole.
   return hole;
-}
-//Select level of difficulty:
-function selectLevel() {
-  difficultyLevel = level.value; //get the value of the selected level;
-  if (difficultyLevel !=1) { //set values for the difficult level.
-    minTime = 400;
-    maxTime = 800;
-  } else { //set values for the easy level.
-    minTime = 500;
-    maxTime = 1000;
-  }
 }
 
 //Pop the mole from the hole:
@@ -57,7 +47,6 @@ function popMole() {
    }, time);
 }
 
-
 //Start the Game:
 function startGame() {
   scoreBoard.textContent = 0; // reset the score to 0;
@@ -74,8 +63,45 @@ function startGame() {
     },1000);
 
   popMole(); //start making the mole popping up and down from random holes.
-  setTimeout(() => timeUp = true, 10000); //stop the popping of the moles after 10 sec.
+  setTimeout(() => timeUp = true, 10000); //stop the popping of the moles after 10 seconds.
+  setTimeout(newGameButton, 11000);
 }
+
+// Check which button is clicked and run the function:
+  // click on the easy button:
+  document.querySelector('.easy').addEventListener('click', function easy() {
+    minTime = 500; // 0.5 seconds
+    maxTime = 1000; // 1 seconds
+    startScreen.classList.toggle('hide'); // toggle the class in order to make the start screen disappear once the level button is clicked.
+    // show the game board to start playing the game:
+    gameBoard.classList.remove('hide');
+    gameBoard.classList.add('show');
+    // set a time delay of 1 second before the game start:
+    setTimeout(startGame, 1000);
+  }, false);
+  //click on the difficult button:
+  document.querySelector('.difficult').addEventListener('click', function difficult() {
+    minTime = 400; // 0.4 seconds
+    maxTime = 800; // 0.8 seconds
+    startScreen.classList.toggle('hide'); // toggle the class in order to make the start screen disappear once the level button is clicked.
+    // show the game board to start playing the game:
+    gameBoard.classList.remove('hide');
+    gameBoard.classList.add('show');
+    // set a time delay of 1 second before the game start:
+    setTimeout(startGame, 1000);
+  }, false);
+
+//Click on the "new Game" button to start over the game:
+newGame.addEventListener('click', function newGame() {
+  window.location.reload();
+}, false);
+
+// make the new game button appear:
+function newGameButton() {
+  newGame.classList.remove('hide'); //remove the hide class
+  newGame.classList.add('show'); // add the show class.
+}
+
 
 //Click on the mole:
 function clickMole(event) {
@@ -85,4 +111,4 @@ function clickMole(event) {
   scoreBoard.textContent = score; //update the score.
 }
 
-moles.forEach(mole => mole.addEventListener("click", clickMole)); //listen to the DOM fopr clicks on the mole.
+moles.forEach(mole => mole.addEventListener("click", clickMole)); //listen to the DOM for clicks on the mole.
