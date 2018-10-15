@@ -3,32 +3,35 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Titan+One" rel="stylesheet">
   <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
 
   <!-- Title -->
-    <title>Whack-a-Mole Game</title>
+    <title>Game</title>
   </head>
 
   <body>
+  <!-- Start Screen -->
+    <div class="start-screen">
     <!-- Title -->
-    <h1>Whack a Mole</h1>
-    <!-- Start Button -->
-    <button class="start" onclick="startGame()">Start Game</button>
+      <h1>Click-2-Score</h1>
     <!-- Game Level -->
-    <select class="level" name="level" onchange="selectLevel()">
-      <option value="">Levels</option>
-      <option value="1">Easy</option>
-      <option value="2">Difficult</option>
-    </select>
-    <!-- Score -->
-    <p>Score : <span class="score">0</span></p>
-    <!-- CountDown -->
-    <p> Time: <span class="timer">10 </span> s</p>
-
+      <div class="level">
+        <div class="btn easy">easy</div>
+        <div class="btn difficult">difficult</div>
+      </div>
+    </div>
     <!-- Game -->
-      <div class="game">
+      <div class="game hide">
+        <div class="block">
+          <!-- Score -->
+            <p>Score <span class="score">0</span></p>
+          <!-- CountDown -->
+            <p> Seconds <span class="timer">10</span></p>
+        </div>
+      <!-- Holes and discs -->
         <div class="hole hole1">
           <div class="mole"></div>
         </div>
@@ -77,7 +80,11 @@
         <div class="hole hole16">
           <div class="mole"></div>
         </div>
+        <!-- Start a new Game -->
+        <h2 class="btn new-game hide">Start a New Game</h2>
+
       </div>
+
     <!-- Javascript -->
       <script src="js/game.js"></script>
   </body>
