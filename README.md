@@ -1,4 +1,7 @@
-# Whack-a-Mole-game
-Whack-a-Mole game
+# Click 2 Score - The Game
 
-Push the mole back to its hole! hit it with a click...
+Choose between easy and difficult game level.
+
+Click the colored circles to increase your score...careful, you only have 10 seconds!!!
+
+Enjoy!
